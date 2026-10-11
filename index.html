@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Topervia Technologies | Intelligent SaaS & Automation</title>
+    <style>
+      :root {
+        --bg: #070a16;
+        --bg-soft: #10172f;
+        --card: rgba(255, 255, 255, 0.08);
+        --card-border: rgba(255, 255, 255, 0.16);
+        --text: #eef2ff;
+        --text-muted: #b8c1e0;
+        --primary: #6d7eff;
+        --secondary: #5ef5d6;
+        --accent: #d26dff;
+      }
+
+      @media (prefers-color-scheme: light) {
+        :root {
+          --bg: #f4f7ff;
+          --bg-soft: #e9efff;
+          --card: rgba(255, 255, 255, 0.75);
+          --card-border: rgba(58, 79, 140, 0.18);
+          --text: #11172c;
+          --text-muted: #475277;
+        }
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Inter, "Segoe UI", Roboto, sans-serif;
+        background:
+          radial-gradient(circle at 10% 10%, rgba(109, 126, 255, 0.25), transparent 35%),
+          radial-gradient(circle at 90% 20%, rgba(94, 245, 214, 0.2), transparent 35%),
+          linear-gradient(145deg, var(--bg), var(--bg-soft));
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      .container {
+        width: min(1120px, 92vw);
+        margin: 0 auto;
+      }
+
+      header {
+        padding: 1.2rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        backdrop-filter: blur(16px);
+        background: rgba(8, 12, 25, 0.35);
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.1rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+      }
+
+      .links {
+        display: flex;
+        gap: 1.1rem;
+      }
+
+      .links a {
+        color: var(--text-muted);
+        text-decoration: none;
+        font-size: 0.95rem;
+        transition: color 0.25s ease;
+      }
+
+      .links a:hover {
+        color: var(--text);
+      }
+
+      .glass {
+        background: var(--card);
+        border: 1px solid var(--card-border);
+        border-radius: 1.1rem;
+        backdrop-filter: blur(14px);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+      }
+
+      section {
+        padding: 4.5rem 0;
+      }
+
+      .hero {
+        display: grid;
+        gap: 1.8rem;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        align-items: center;
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin: 0 0 0.8rem;
+        line-height: 1.2;
+      }
+
+      h1 {
+        font-size: clamp(2rem, 4vw, 3.4rem);
+      }
+
+      .hero p {
+        color: var(--text-muted);
+        max-width: 54ch;
+      }
+
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.9rem;
+        margin-top: 1.5rem;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        color: #fff;
+        font-weight: 600;
+        padding: 0.8rem 1.2rem;
+        border-radius: 0.8rem;
+        border: 1px solid transparent;
+        transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+
+      .btn-primary {
+        background: linear-gradient(95deg, var(--primary), var(--accent));
+        box-shadow: 0 12px 24px rgba(109, 126, 255, 0.32);
+      }
+
+      .btn-secondary {
+        background: rgba(255, 255, 255, 0.06);
+        border-color: rgba(255, 255, 255, 0.3);
+      }
+
+      .hero-card {
+        padding: 1.3rem;
+      }
+
+      .metric {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        padding: 0.65rem 0;
+        font-size: 0.95rem;
+      }
+
+      .grid-4 {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      }
+
+      .card {
+        padding: 1.3rem;
+        transition: transform 0.25s ease, border-color 0.25s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(109, 126, 255, 0.5);
+      }
+
+      .card p,
+      .muted {
+        color: var(--text-muted);
+      }
+
+      .showcase {
+        display: grid;
+        grid-template-columns: 1.1fr 1fr;
+        gap: 1rem;
+      }
+
+      .matrix,
+      .dashboard {
+        padding: 1.2rem;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.95rem;
+      }
+
+      th,
+      td {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+        padding: 0.65rem;
+        text-align: left;
+      }
+
+      .dash-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.9rem;
+      }
+
+      .status {
+        padding: 0.25rem 0.6rem;
+        border-radius: 999px;
+        font-size: 0.78rem;
+        background: rgba(94, 245, 214, 0.18);
+        color: #4cffd5;
+      }
+
+      .flow {
+        display: grid;
+        gap: 0.7rem;
+      }
+
+      .flow-item {
+        padding: 0.65rem 0.8rem;
+        border-radius: 0.7rem;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.7rem;
+      }
+
+      .badge {
+        padding: 0.55rem 0.8rem;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        background: rgba(255, 255, 255, 0.06);
+        font-size: 0.86rem;
+      }
+
+      footer {
+        padding: 2.5rem 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.14);
+      }
+
+      .footer-layout {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .footer-links {
+        display: flex;
+        gap: 0.85rem;
+        flex-wrap: wrap;
+      }
+
+      .footer-links a {
+        color: var(--text-muted);
+        text-decoration: none;
+      }
+
+      .footer-links a:hover {
+        color: var(--text);
+      }
+
+      @media (max-width: 860px) {
+        .showcase {
+          grid-template-columns: 1fr;
+        }
+
+        .links {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <nav>
+          <div class="logo">Topervia Technologies</div>
+          <div class="links">
+            <a href="#solutions">Solutions</a>
+            <a href="#showcase">Showcase</a>
+            <a href="#stack">Tech Stack</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="hero" id="home">
+        <div>
+          <h1>Build Smarter Operations with AI-Powered SaaS Systems</h1>
+          <p>
+            Topervia Technologies helps teams automate workflows, unify cloud operations, and deploy secure AI-enabled SaaS products that scale with enterprise reliability.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#contact">Get Started</a>
+            <a class="btn btn-secondary" href="mailto:contact@topervia.tech">Book Demo</a>
+          </div>
+        </div>
+        <aside class="glass hero-card">
+          <h3>Live Platform Snapshot</h3>
+          <div class="metric"><span>Automated Tasks</span><strong>18,450/day</strong></div>
+          <div class="metric"><span>Avg Response Time</span><strong>120ms</strong></div>
+          <div class="metric"><span>Cloud Uptime</span><strong>99.99%</strong></div>
+          <div class="metric" style="border-bottom: none;"><span>Integration Coverage</span><strong>120+ APIs</strong></div>
+        </aside>
+      </section>
+
+      <section id="solutions">
+        <h2>Core Solutions</h2>
+        <p class="muted">Purpose-built capabilities for modern digital operations.</p>
+        <div class="grid-4">
+          <article class="glass card">
+            <h3>Workflow Automation</h3>
+            <p>Trigger-driven pipelines that eliminate manual bottlenecks and reduce operational overhead.</p>
+          </article>
+          <article class="glass card">
+            <h3>Software as a Service (SaaS)</h3>
+            <p>Composable product modules for launching secure, scalable subscription-based platforms faster.</p>
+          </article>
+          <article class="glass card">
+            <h3>AI Infrastructure Integration</h3>
+            <p>Embed model orchestration, vector search, and inference monitoring into existing enterprise ecosystems.</p>
+          </article>
+          <article class="glass card">
+            <h3>Enterprise Cloud Solutions</h3>
+            <p>Governed multi-cloud architecture with observability, resilience, and compliance at every layer.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="showcase">
+        <h2>Product Showcase</h2>
+        <p class="muted">A preview of how Topervia products coordinate workflow automation and SaaS performance analytics.</p>
+        <div class="showcase">
+          <div class="glass matrix">
+            <h3>Feature Matrix</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>Capability</th>
+                  <th>Starter</th>
+                  <th>Enterprise</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Workflow Templates</td>
+                  <td>40+</td>
+                  <td>Custom Unlimited</td>
+                </tr>
+                <tr>
+                  <td>AI Automation Agents</td>
+                  <td>Shared</td>
+                  <td>Dedicated + Private</td>
+                </tr>
+                <tr>
+                  <td>Security Controls</td>
+                  <td>Standard</td>
+                  <td>Zero Trust + SIEM</td>
+                </tr>
+                <tr>
+                  <td>Analytics Dashboards</td>
+                  <td>Real-time</td>
+                  <td>Real-time + Predictive</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="glass dashboard">
+            <div class="dash-header">
+              <h3>Automation Dashboard</h3>
+              <span class="status">All Systems Active</span>
+            </div>
+            <div class="flow">
+              <div class="flow-item"><strong>Lead Intake</strong> → AI classification + CRM sync</div>
+              <div class="flow-item"><strong>Approval Workflow</strong> → Rules engine + audit tracking</div>
+              <div class="flow-item"><strong>Invoice Pipeline</strong> → Validation + payment orchestration</div>
+              <div class="flow-item"><strong>Client Health Signals</strong> → Live metrics + anomaly alerts</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="stack">
+        <h2>Tech Stack & Trust</h2>
+        <p class="muted">Modern cloud-native, secure-by-design engineering foundations.</p>
+        <div class="badges">
+          <span class="badge">AWS & Azure Cloud Deployments</span>
+          <span class="badge">SOC 2 Ready Security Controls</span>
+          <span class="badge">LLM & MLOps Integration</span>
+          <span class="badge">Kubernetes & Container Orchestration</span>
+          <span class="badge">End-to-End Encryption</span>
+          <span class="badge">Observability & Incident Intelligence</span>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contact">
+      <div class="container footer-layout">
+        <div>
+          <strong>Topervia Technologies</strong><br />
+          <a href="mailto:contact@topervia.tech" style="color: inherit;">contact@topervia.tech</a>
+        </div>
+        <div class="footer-links">
+          <a href="#home">Home</a>
+          <a href="#solutions">Solutions</a>
+          <a href="#showcase">Showcase</a>
+          <a href="#stack">Tech Stack</a>
+        </div>
+        <small>© 2026 Topervia Technologies. All rights reserved.</small>
+      </div>
+    </footer>
+  </body>
+</html>
